@@ -1,7 +1,8 @@
 <ul>
   <% @tasks.each do |task| %>
   <li>
-    <%= task %>
+    <%= task.name %>
+    <%= task.completion_date %>
   </li>
   <% end %>
 </ul>
