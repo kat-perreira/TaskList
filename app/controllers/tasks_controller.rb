@@ -21,16 +21,16 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new(
+    @task = Task.new(
       name: params[:task][:name],
       completion_date: params[:task][:completion_date],
       description: params[:task][:description]
     ) #instantiate a new task
 
-    save_success = task.save
+    save_success = @task.save
 
     if save_success # save returns true if the database insert succeeds
-      redirect_to tasks_path # go to the index so we can see the book in the list
+      redirect_to tasks_path # go to the index so we can see the task in the list
     else # save failed
       render :new # show the new book form view again
     end
@@ -47,14 +47,11 @@ class TasksController < ApplicationController
         completion_date: params[:task][:completion_date],
         description: params[:task][:description]
       )
-
         redirect_to task_path(@task)
   end
 
   def destroy
     Task.find(params[:id]).destroy
-    flash[:success] = "User deleted"
     redirect_to tasks_path
   end
-
 end

@@ -4,7 +4,7 @@
     <%= task.name %>
     <%= link_to "view details", task %>
     <%= link_to "delete", task, method: :delete,
-                                 data: { confirm: "You sure?" } %>
+                                 data: { confirm: "Are you really really sure that you want to delete #{task.name}?" } %>
   </li>
   <% end %>
 </ul>
