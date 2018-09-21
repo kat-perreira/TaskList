@@ -2,7 +2,9 @@
   <% @tasks.each do |task| %>
   <li>
     <%= task.name %>
-    <%= task.completion_date %>
+    <%= link_to "view details", task %>
   </li>
   <% end %>
 </ul>
+
+<%= link_to "Enter new task", new_task_path %>
