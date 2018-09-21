@@ -3,6 +3,8 @@
   <li>
     <%= task.name %>
     <%= link_to "view details", task %>
+    <%= link_to "delete", task, method: :delete,
+                                 data: { confirm: "You sure?" } %>
   </li>
   <% end %>
 </ul>

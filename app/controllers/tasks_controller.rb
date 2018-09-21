@@ -51,4 +51,10 @@ class TasksController < ApplicationController
         redirect_to task_path(@task)
   end
 
+  def destroy
+    Task.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to tasks_path
+  end
+
 end
