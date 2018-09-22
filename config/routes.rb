@@ -16,4 +16,8 @@ Rails.application.routes.draw do
 
   delete '/tasks/:id', to: 'tasks#destroy'
 
+  # Rails.application.routes.draw do
+  #   resources :tasks
+# end
+
 end

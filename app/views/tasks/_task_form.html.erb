@@ -1,0 +1,13 @@
+<%= form_with model: @task, class: 'task-form' do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :completion_date %>
+  <%= f.date_field :completion_date%>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+
+  <%= f.submit action_type, class: "task-form-submit-button" %>
+  <% end %>

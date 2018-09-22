@@ -21,37 +21,44 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(
-      name: params[:task][:name],
-      completion_date: params[:task][:completion_date],
-      description: params[:task][:description]
-    ) #instantiate a new task
+    filtered_params = task_params()
+
+    @task = Task.new(filtered_params)
 
     save_success = @task.save
 
-    if save_success # save returns true if the database insert succeeds
-      redirect_to tasks_path # go to the index so we can see the task in the list
-    else # save failed
-      render :new # show the new book form view again
+    if save_success
+      redirect_to tasks_path
+    else
+      render :new
     end
   end
 
   def edit
-    @task = Task.find(params[:id])
+    @task = Task.find_by(id: params[:id])
   end
 
   def update
-    @task = Task.find(params[:id])
-      @task.update(
-        name: params[:task][:name],
-        completion_date: params[:task][:completion_date],
-        description: params[:task][:description]
-      )
-        redirect_to task_path(@task)
+    task = Task.find(params[:id])
+      task.update(task_params)
+
+    redirect_to task_path(task.id)
   end
 
   def destroy
-    Task.find(params[:id]).destroy
+    task = Task.find(id: params[:id])
+    task.destroy
     redirect_to tasks_path
   end
+
+  private
+
+  def task_params
+    return params.require(:task).permit(
+      :name,
+      :completion_date,
+      :description
+    )
+  end
+
 end
