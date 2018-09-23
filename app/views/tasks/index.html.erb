@@ -1,17 +1,18 @@
 
 <div class="wrapper_index">
   <h2>YOUR TASKS</h2>
-  <ul>
-    <% @tasks.each_with_index do |task, index| %>
+  <ol>
+    <% @tasks.each do |task| %>
     <li>
       <%if task.completed == true %>
-      <div class="strike_thru"><%= "#{index + 1}. " + task.name%></div>
+      <%=link_to task.name, task_path(task.id)%>
+
       <% else %>
-      <div class="no_strike"><%= "#{index + 1}. " + task.name%></div>
+      <%=link_to task.name, task_path(task.id)%>
       <% end %>
-      <%= link_to "view details", task %>
+      <%= link_to "view details/edit", task %>
       <%= link_to "delete", task, method: :delete, data: { confirm: "Are you really really sure that you want to delete #{task.name}?" } %>
-      <%= link_to "task completed", task,  data: { confirm: "Mark complete?"} %>
+      <%= link_to "mark completed", task, data: { confirm: "Mark complete?"} %>
 
     </li>
     <% end %>
