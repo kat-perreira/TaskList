@@ -46,11 +46,11 @@ class TasksController < ApplicationController
     redirect_to root_path
   end
 
-  def completed
+  def complete
     todays_date = Date.today
     @task = Task.find_by(id: params[:id])
     @task.update(completed: true, date_completed: todays_date)
-    redirect_to tasks_path
+    redirect_to root_path
   end
 
   private
