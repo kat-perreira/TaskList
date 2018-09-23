@@ -1,5 +1,4 @@
-
-
+require 'date'
 
 
 class TasksController < ApplicationController
@@ -36,24 +35,22 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = Task.find(params[:id])
-    task.update(task_params)
-    redirect_to task_path(task.id)
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    redirect_to tasks_path
   end
 
   def destroy
     task = Task.find_by(id: params[:id])
     task.destroy
-    redirect_to tasks_path
+    redirect_to root_path
   end
 
   def completed
     todays_date = Date.today
-    params[:completed].each do |check|
-      task = Task.find_by(id: params[check])
-      task.update(:completed, true)
-      task.edit(:completion_date, todays_date)
-    end
+    @task = Task.find_by(id: params[:id])
+    @task.update(completed: true, date_completed: todays_date)
+    redirect_to tasks_path
   end
 
   private
@@ -63,7 +60,6 @@ class TasksController < ApplicationController
       :name,
       :completion_date,
       :description,
-      :completed
     )
   end
 
