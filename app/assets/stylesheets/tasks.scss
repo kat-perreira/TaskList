@@ -1,3 +1,75 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  background-color: #F9FBE7;
+  color: #1A5276;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+nav ul {
+  list-style-type: none;
+  font-size: 1em;
+  font-style: normal;
+  text-transform: capitalize;
+  justify-content: center;
+  padding: 20px;
+}
+
+nav ul li {
+    margin: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #28B463;
+
+}
+
+a:hover{
+    color: #95A5A6;
+}
+
+.wrapper_index {
+  align-items: center;
+}
+
+.wrapper_index h2 {
+  color: #CB4335;
+  padding-bottom: -3em;
+}
+
+
+.wrapper_index ul {
+  list-style-type: none;
+  font-size: 1em;
+  font-style: normal;
+  text-transform: capitalize;
+  padding: 20px;
+
+}
+
+.wrapper_index ul li {
+    margin: 10px;
+}
+
+
+.wrapper_index a {
+  color: #7986CB;
+  text-decoration: none;
+  font-size: .85em;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  list-style-type: none;
+}
+
+.wrapper_index a:hover{
+    color: #95A5A6;
+}
+
+.strikethru {
+  text-decoration: line-through;
+}
