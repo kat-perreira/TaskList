@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'tasks#index'
-    resources :tasks
-    
-    post '/tasks/:id/completed', to: 'books#completed', as: 'completed_task'
+  resources :tasks
+
+  patch '/tasks/:id/complete', to: 'tasks#complete', as: 'completed_task'
 
 end
