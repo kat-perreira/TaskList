@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TaskList</title>
+  <title></title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
@@ -11,12 +11,18 @@
 <!-- dont touch stuff in the head -->
 <body>
   <header>
-    <h1> Task List </h1 >
-    </header>
-    <main>
-      <%= yield %>
-    </main>
-    <footer>
-    </footer>
-  </body>
-  </html>
+    <h1> TASKLIST </h1>
+    <nav>
+      <ul>
+        <li><%= link_to "Add Task", new_task_path %> </li>
+        <%= link_to "All Tasks", tasks_path %>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <%= yield %>
+  </main>
+  <footer>
+  </footer>
+</body>
+</html>
