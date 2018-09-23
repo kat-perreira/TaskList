@@ -22,11 +22,8 @@ class TasksController < ApplicationController
 
   def create
     filtered_params = task_params()
-
     @task = Task.new(filtered_params)
-
     save_success = @task.save
-
     if save_success
       redirect_to tasks_path
     else
@@ -41,15 +38,22 @@ class TasksController < ApplicationController
   def update
     task = Task.find(params[:id])
     task.update(task_params)
-
     redirect_to task_path(task.id)
   end
 
   def destroy
     task = Task.find_by(id: params[:id])
-
     task.destroy
     redirect_to tasks_path
+  end
+
+  def completed
+    todays_date = Date.today
+    params[:completed].each do |check|
+      task = Task.find_by(id: params[check])
+      task.update(:completed, true)
+      task.edit(:completion_date, todays_date)
+    end
   end
 
   private
@@ -58,7 +62,8 @@ class TasksController < ApplicationController
     return params.require(:task).permit(
       :name,
       :completion_date,
-      :description
+      :description,
+      :completed
     )
   end
 
