@@ -9,16 +9,15 @@
         <%=link_to "#{index +1}. " + task.name, task_path(task.id)%>
       </div>
       <% else %>
-        <%=link_to "#{index +1}. " + task.name, task_path(task.id)%>
-        <% end %>
-  </div>
-
-  <div class="links">
+      <%=link_to "#{index +1}. " + task.name, task_path(task.id)%>
+      <% end %>
+    </div>
+    <div class="links">
       <%= link_to "view details ", task %>
       <%= link_to "delete ", task, method: :delete, data: { confirm: "Are you really really sure that you want to delete #{task.name}?" } %>
       <%= link_to "Edit Task ", edit_task_path(task.id) %>
       <%= link_to "Mark completed", completed_task_path(task.id), method: :patch, data: {confirm: "Mark complete?"} %>
     </div>
-    </li>
-    <% end %>
-  </ol>
+  </li>
+  <% end %>
+</ol>
